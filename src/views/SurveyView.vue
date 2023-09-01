@@ -206,6 +206,7 @@ const surveyLoading = computed(() => store.state.currentSurvey.loading)
 // Create empty survey
 let model = ref({
   title: "",
+  sluq: "",
   status: false,
   description: null,
   image_url: null,
@@ -270,11 +271,13 @@ function questionChange(question) {
 }
 
 function saveSurvey() {
-  store.dispatch('saveSurvey', model.value).then(({ data }) => {
-    store.commit('notify', {
-      type: 'success',
-      message: 'Survey was updated'
+  store.dispatch('saveSurvey', {...model.value})
+      .then((data) => {
+        store.commit('notify', {
+          type: 'success',
+          message: 'Survey was updated'
     });
+        console.log(data)
     router.push({
       name: 'SurveyView',
       params: {id: data.data.id}

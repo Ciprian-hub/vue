@@ -1,7 +1,6 @@
 import {createStore} from "vuex";
 import axiosClient from "../axios";
 
-
 const store = createStore({
     state: {
         user: {
@@ -17,7 +16,7 @@ const store = createStore({
             data: []
         },
         questionTypes: ['text', 'select', 'radio', 'checkbox', 'textarea'],
-        notifications: {
+        notification: {
             show: false,
             message: '',
             type: 'success',
@@ -139,11 +138,11 @@ const store = createStore({
             sessionStorage.setItem('TOKEN', token);
         },
         notify: (state, {message, type}) => {
-            state.notifications.show = true;
-            state.notifications.type = type;
-            state.notifications.message = message;
+            state.notification.show = true;
+            state.notification.type = type;
+            state.notification.message = message;
             setTimeout(() => {
-                state.notifications.show = false;
+                state.notification.show = false;
             },3000)
         }
     },
