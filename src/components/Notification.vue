@@ -14,7 +14,7 @@ import {useStore} from "vuex";
 
 const store = useStore();
 
-const notification = computed(() => store.state.notifications)
+const notification = computed(() => store.state.notification)
 </script>
 
 <style>

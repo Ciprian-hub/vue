@@ -199,7 +199,6 @@ const navigation = [
 
 export default {
   components: {
-    Notification,
     Disclosure,
     DisclosureButton,
     DisclosurePanel,
@@ -210,7 +209,7 @@ export default {
     BellIcon,
     MenuIcon,
     XIcon,
-    // Notification,
+    Notification,
   },
   setup() {
     const store = useStore();
