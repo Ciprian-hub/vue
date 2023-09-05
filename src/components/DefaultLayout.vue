@@ -8,7 +8,7 @@
     <body class="h-full">
     ```
   -->
-  <div class="min-h-full">
+  <div class="min-h-full bg-gray-100">
     <Disclosure as="nav" class="bg-gray-800" v-slot="{ open }">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
@@ -168,9 +168,7 @@
         </div>
       </DisclosurePanel>
     </Disclosure>
-
     <router-view :key="$route.path"></router-view>
-
     <Notification/>
   </div>
 </template>

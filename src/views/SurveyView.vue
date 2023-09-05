@@ -277,7 +277,6 @@ function saveSurvey() {
           type: 'success',
           message: 'Survey was updated'
     });
-        console.log(data)
     router.push({
       name: 'SurveyView',
       params: {id: data.data.id}
