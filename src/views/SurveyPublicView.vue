@@ -73,7 +73,6 @@ const answers = ref({})
 
 store.dispatch("getSurveyBySlug", route.params.slug)
 
-
 function submitSurvey () {
   console.log(JSON.stringify(answers.value, undefined, 2))
   store

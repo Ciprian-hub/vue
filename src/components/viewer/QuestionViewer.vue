@@ -92,7 +92,7 @@ const {question, index, modelValue} = defineProps({
   modelValue: [String, Array]
 })
 
-const emits = defineEmits(["update: modelValue"])
+const emits = defineEmits(["update:modelValue"])
 
 let model;
 if(question.type === 'checkbox') {
@@ -101,12 +101,12 @@ if(question.type === 'checkbox') {
 
 function onCheckboxChange($event) {
   const selectOptions = [];
-  for(let text in model.value) {
-    if(model.value[text]){
-      selectOptions.push(text)
+  for(let uuid in model.value) {
+    if(model.value[uuid]){
+      selectOptions.push(uuid)
     }
   }
-  emits("update: modelValue", selectOptions)
+  emits("update:modelValue", selectOptions)
 }
 </script>
 

@@ -57,6 +57,11 @@ const store = createStore({
                 })
         },
 
+        saveSurveyAnswer({commit}, {surveyId, answers}) {
+            return axiosClient
+                .post(`/survey/${surveyId}/answer`, {answers})
+        },
+
         getSurvey ({commit}, id) {
             commit("setCurrentSurveyLoading", true)
             return axiosClient.get(`/survey/${id}`)
