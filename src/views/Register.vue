@@ -2,6 +2,13 @@
     <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Register for free</h2>
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form class="space-y-6" @submit="register">
+        <Alert v-if="Object.keys(errors).length" class="flex-col items-stretch text-sm">
+          <div v-for="(field, i) of Object.keys(errors)" :key="i">
+            <div v-for="(error, ind) of errors[field] || []" :key="ind">
+              * {{ error }}
+            </div>
+          </div>
+        </Alert>
         <div>
           <label for="fullName" class="block text-sm font-medium leading-6 text-gray-900">Full Name</label>
           <div class="mt-2">
@@ -55,24 +62,35 @@
 <script setup>
 import store from "../store";
 import {useRouter} from "vue-router";
+import {ref} from "vue";
+import Alert from "../components/Alert.vue";
 
 const router = useRouter()
 const user = {
   name: "",
   email: "",
   password: "",
-  password_confirmation: ""
+  password_confirmation: " "
 };
+const loading = ref(false);
+const errors = ref({})
 
 function register(ev){
   ev.preventDefault();
+  loading.value = true;
   store
       .dispatch('register', user)
       .then(() => {
+        loading.value = false;
         router.push({
           name: "Dashboard"
         })
-      })
+      }).catch((err) => {
+    loading.value = false;
+        if(err.response.status === 422) {
+          errors.value = err.response.data.errors
+        }
+  })
 }
 
 </script>
