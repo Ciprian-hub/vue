@@ -1,8 +1,13 @@
 import {createStore} from "vuex";
 import axiosClient from "../axios";
+import {data} from "autoprefixer";
 
 const store = createStore({
     state: {
+        dashboard: {
+            loading: false,
+            data: {}
+        },
         user: {
             data: {},
             token: sessionStorage.getItem("TOKEN")
@@ -25,6 +30,20 @@ const store = createStore({
     },
     getters: {},
     actions: {
+        getDashboardInfo({commit}) {
+            commit('dashboardLoading', true)
+            return axiosClient
+                .get('/dashboard').then((res) => {
+                    commit('dashboardLoading', false)
+                    commit('setDashboardData', res.data)
+                    return res
+                })
+                .catch((err) => {
+                    commit('dashboardLoading', false)
+                    return err
+                })
+        },
+
         getSurveys({commit}, {url = null} = {}) {
             url = url || '/survey'
             commit('setSurveysLoading', true)
@@ -167,6 +186,13 @@ const store = createStore({
             setTimeout(() => {
                 state.notification.show = false;
             },3000)
+        },
+        dashboardLoading: (state, loading) => {
+            state.dashboard.loading = loading
+        },
+
+        setDashboardData: (state, data) => {
+            state.dashboard.data = data
         }
     },
     modules: {},
