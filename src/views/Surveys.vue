@@ -62,11 +62,7 @@ const surveys = computed(() => store.state.surveys)
 store.dispatch('getSurveys')
 
 function deleteSurvey(survey) {
-  if(
-      confirm(
-          "Are you sure you want to delete this ?"
-      )
-  ) {
+  if( confirm("Are you sure you want to delete this ?") ) {
     store.dispatch('deleteSurvey', survey.id).then(() =>{
       store.dispatch('getSurveys')
     })
