@@ -2,7 +2,6 @@ import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import * as path from "path";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   build: {
     rollupOptions: {
@@ -17,9 +16,9 @@ export default defineConfig({
   },
   plugins: [Vue()],
   resolve: {
-    // alias: {
-    //   '@': path.resolve(__dirname, 'src')
-    // },
-    // extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
+    alias: {
+      '@': path.resolve( 'src')
+    },
+    extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
   }
 })
