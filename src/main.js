@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp } from '@vue/runtime-dom'
 import store from "./store"
 import router from "./router"
 import './index.css'
