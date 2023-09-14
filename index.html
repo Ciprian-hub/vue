@@ -8,6 +8,17 @@
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module">
+        import { createApp } from 'vue'
+        import store from "./src/store";
+        import router from "./src/router";
+        import './src/index.css'
+        import App from "./src/App.vue"
+
+        createApp(App)
+            .use(router)
+            .use(store)
+            .mount('#app')
+    </script>
   </body>
 </html>
