@@ -25,6 +25,6 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ftp.smartcoder.online
+        server: ftp.api-smartcoder.online
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
