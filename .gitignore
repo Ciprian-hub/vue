@@ -6,4 +6,3 @@ dist-ssr
 
 .env
 .env.production
-.env.example
