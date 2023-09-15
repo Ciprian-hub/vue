@@ -3,6 +3,7 @@ import Vue from '@vitejs/plugin-vue'
 import * as path from "path";
 
 export default defineConfig({
+  base: process.env.VITE_API_BASE_URL,
   build: {
     rollupOptions: {
       output:{
