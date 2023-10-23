@@ -7,6 +7,8 @@ import Surveys from "../views/Surveys.vue";
 import SurveyPublicView from "../views/SurveyPublicView.vue";
 import SurveyView from "../views/SurveyView.vue";
 import AuthLayout from "../components/AuthLayout.vue";
+// import HomeLandingPage from "../components/HomeLandingPage.vue"
+import Home from "../views/Home.vue"
 import store from "../store";
 
 const routes = [
@@ -28,6 +30,12 @@ const routes = [
             {path: '/surveys/create', name: 'SurveyCreate', component: SurveyView},
             {path: '/surveys/:id', name: 'SurveyView', component: SurveyView},
         ]
+    },
+    {
+        path: '/home',
+        name: 'Home',
+        component: Home,
+        meta: {isGuest: true},
     },
     {
         path: '/Auth',
@@ -57,7 +65,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     if(to.meta.requiresAuth && !store.state.user.token) {
-        next({name: 'Login'})
+        next({name: 'Home'})
     } else if(store.state.user.token && to.meta.isGuest)  {
         next({name: 'Dashboard'})
     } else {

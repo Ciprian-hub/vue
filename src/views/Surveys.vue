@@ -34,7 +34,7 @@
         <a v-for="(link, i) of surveys.links"
            :key="i"
            v-html="link.label"
-           :diabled="!link.url"
+           :disabled="!link.url"
            href="#"
            @click="getForPage($event, link)"
            class="relative inline-flex items-center px-4 py-2 border text-sm"

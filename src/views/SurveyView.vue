@@ -286,9 +286,7 @@ function saveSurvey() {
 
 
 function deleteSurvey() {
-  if(
-      confirm("Are you sure you want to delete this?")
-  ) {
+  if(confirm("Are you sure you want to delete this?")) {
     store.dispatch('deleteSurvey', model.value.id)
     .then(() => {
       router.push({
